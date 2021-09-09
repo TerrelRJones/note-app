@@ -6,6 +6,8 @@ const morgan = require("morgan");
 const sequelize = require("sequelize");
 const noteRouter = require("./routes/note.routes");
 const userRouter = require("./routes/user.routes");
+const loginRouter = require("./routes/login.routes");
+const registerRouter = require("./routes/register.routes");
 
 const app = express();
 const port = process.env.PORT || 4001;
@@ -15,6 +17,8 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+app.use("/", registerRouter);
+app.use("/", loginRouter);
 app.use("/create", noteRouter);
 app.use("/", userRouter);
 
