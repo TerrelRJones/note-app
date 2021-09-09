@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         as: "notes",
       });
     }
-
+    // NEGATE ID
     toJSON() {
       return { ...this.get(), id: undefined };
     }
