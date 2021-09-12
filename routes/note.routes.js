@@ -4,11 +4,11 @@ const { Notes, User } = require("../models");
 
 // CREATE NOTE
 router.post("/note", async (req, res) => {
-  const { userUuid, note } = req.body;
+  const { userUuid, title, note } = req.body;
   try {
     const user = await User.findOne({ where: { user_id: userUuid } });
 
-    const notes = await Notes.create({ note, userId: user.id });
+    const notes = await Notes.create({ userId: user.id, title, note });
 
     return res.json(notes);
   } catch (err) {
@@ -29,6 +29,20 @@ router.get("/note", async (req, res) => {
     console.log(err.message);
     return res.status(500).json("Error retrieving notes");
   }
+});
+
+router.get("/notes", async (req, res) => {
+  const notes = await Notes.findAll();
+
+  return res.json(notes);
+});
+
+// DELETE NOTE
+router.delete("/note", async (req, res) => {
+  const { note_id } = req.body;
+  await Notes.destroy({ where: { note_uuid: note_id } });
+
+  return res.status(200).json("Note Deleted");
 });
 
 module.exports = router;

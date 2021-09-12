@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const router = Router();
-const bcrypt = require("bcrypt");
 
 const { User } = require("../models");
 
@@ -21,10 +20,20 @@ router.get("/user", async (req, res) => {
   }
 });
 
+// GET ALL USERS
 router.get("/users", async (req, res) => {
   const user = await User.findAll();
 
   return res.json(user);
+});
+
+// DELETE USER
+router.delete("/user", async (req, res) => {
+  const { user_id } = req.body;
+
+  await User.destroy({ where: { user_id: user_id } });
+
+  return res.status(200).json(`${user_id.username} was deleted.`);
 });
 
 module.exports = router;

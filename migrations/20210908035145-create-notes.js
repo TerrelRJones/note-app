@@ -8,13 +8,17 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      post_uuid: {
+      note_uuid: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
       },
       userId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      title: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       note: {
