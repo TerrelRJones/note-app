@@ -1,0 +1,26 @@
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rebeccapurple;
+  height: 90px;
+  /* margin: 0 auto; */
+  width: 100%;
+}
+
+.login__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  text-decoration: none;
+  color: white;
+  margin-right: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.links:hover {
+  text-decoration: underline;
+}

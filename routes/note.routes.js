@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { Notes, User } = require("../models");
+const authorization = require("../middleware/authorization");
 
 // CREATE NOTE
 router.post("/note", async (req, res) => {
@@ -31,15 +32,18 @@ router.get("/note", async (req, res) => {
   }
 });
 
-router.get("/notes", async (req, res) => {
-  const notes = await Notes.findAll();
+// // GET ALL NOTES
+// router.get("/notes", async (req, res) => {
+//   const notes = await Notes.findAll({ include: "user" });
 
-  return res.json(notes);
-});
+//   return res.json(notes);
+// });
 
 // DELETE NOTE
-router.delete("/note", async (req, res) => {
-  const { note_id } = req.body;
+router.delete("/note/:note_id", async (req, res) => {
+  // const { note_id } = req.body;
+  const { note_id } = req.params;
+  console.log(note_id);
   await Notes.destroy({ where: { note_uuid: note_id } });
 
   return res.status(200).json("Note Deleted");
