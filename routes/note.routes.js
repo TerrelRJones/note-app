@@ -43,10 +43,18 @@ router.get("/note", async (req, res) => {
 router.delete("/note/:note_id", async (req, res) => {
   // const { note_id } = req.body;
   const { note_id } = req.params;
-  console.log(note_id);
-  await Notes.destroy({ where: { note_uuid: note_id } });
+  const { user } = req.params;
+  console.log(note_id + " " + user_id);
+  try {
+    await Notes.destroy({
+      where: { note_uuid: note_id } && { user_id: user.user_id },
+    });
 
-  return res.status(200).json("Note Deleted");
+    return res.status(200).json("Note Deleted");
+  } catch (e) {
+    console.error(e.message);
+    res.json({ msg: "Not your note" });
+  }
 });
 
 module.exports = router;

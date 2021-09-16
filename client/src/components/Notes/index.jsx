@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./style.css";
 
 const Notes = () => {
@@ -21,14 +21,10 @@ const Notes = () => {
 
   useEffect(() => {
     fetchData();
-    // return () => {
-    //   console.log("unmount");
-    // };
   }, []);
 
   return (
-    <div>
-      <h1>NOTES</h1>
+    <>
       <div className="note__container">
         {notes.map((item) => {
           return (
@@ -45,7 +41,7 @@ const Notes = () => {
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 

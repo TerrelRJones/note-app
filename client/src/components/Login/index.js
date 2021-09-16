@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setAuthentication }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -11,7 +11,6 @@ const Login = () => {
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
-    // console.log(newData);
   };
 
   // Login
@@ -27,7 +26,8 @@ const Login = () => {
     });
     const isLoggedIn = await loggedIn.json();
 
-    console.log(isLoggedIn);
+    localStorage.setItem("token", isLoggedIn.token);
+    setAuthentication(true);
   };
 
   return (
@@ -35,6 +35,7 @@ const Login = () => {
       <form onSubmit={(e) => login(e)}>
         <label>Email</label>
         <input
+          className="form-control my-3"
           type="text"
           placeholder="email"
           onChange={(e) => handle(e)}
@@ -43,13 +44,14 @@ const Login = () => {
         />
         <label>Password</label>
         <input
+          className="form-control my-3"
           type="password"
           placeholder="password"
           onChange={(e) => handle(e)}
           id="password"
           value={data.password}
         />
-        <button>Login</button>
+        <button className="btn btn-dark ">Login</button>
       </form>
       <div>
         <Link to="/register">

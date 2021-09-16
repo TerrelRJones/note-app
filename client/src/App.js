@@ -1,39 +1,62 @@
-import Layout from "./layout";
-import Header from "./layout/Header";
-import Main from "./layout/Main";
-import Footer from "./layout/Footer";
-import Notes from "./components/Notes";
-import SideMenu from "./components/SideMenu";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import { useState } from "react";
 
+import Login from "./components/Login";
+import Register from "./components/Register/";
+import Dashboard from "./components/Dashboard/";
 import "./reset.css";
 import "./app.css";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 function App() {
+  const [isAuth, setIsAuth] = useState(false);
+
+  const setAuthentication = (boolean) => {
+    setIsAuth(boolean);
+  };
+
   return (
-    <Layout>
+    <div className="container">
       <Router>
         <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/dashboard">
-            <Header />
-            <Main>
-              <SideMenu />
-              <Notes />
-            </Main>
-            <Footer />
-          </Route>
+          <Route
+            path="/login"
+            render={(props) =>
+              !isAuth ? (
+                <Login {...props} setAuthentication={setAuthentication} />
+              ) : (
+                <Redirect to="/dashboard" />
+              )
+            }
+          />
+          <Route
+            path="/register"
+            render={(props) =>
+              !isAuth ? (
+                <Register {...props} setAuthentication={setAuthentication} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
+          <Route
+            path="/dashboard"
+            render={(props) =>
+              isAuth ? (
+                <Dashboard {...props} setAuthentication={setAuthentication} />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
+          />
         </Switch>
       </Router>
-    </Layout>
+    </div>
   );
 }
 

@@ -22,9 +22,9 @@ router.post("/login", async (req, res) => {
     // token
     const token = jwtGenerator(user.user_id);
 
-    res.json({ token });
+    return res.json({ token });
 
-    res.status(200).json("LOGGED IN");
+    // res.status(200).json("LOGGED IN");
   } catch (e) {
     console.log(e.message);
     res.status(500).json("error");
