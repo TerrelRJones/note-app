@@ -36,7 +36,7 @@ router.get("/verify", authorization, async (req, res) => {
     res.json(true);
   } catch (e) {
     console.log(e.message);
-    res.status(500).json("error");
+    res.status(403).json("error");
   }
 });
 

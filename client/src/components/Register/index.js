@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import "./style.css";
 
@@ -30,8 +31,13 @@ const Register = ({ setAuthentication }) => {
     });
     const isRegistered = await registered.json();
 
-    localStorage.setItem("token", isRegistered.token);
-    setAuthentication(true);
+    if (isRegistered) {
+      localStorage.setItem("token", isRegistered.token);
+      setAuthentication(true);
+      toast.success("Registered successfully");
+    } else {
+      toast.error(isRegistered);
+    }
   };
 
   return (

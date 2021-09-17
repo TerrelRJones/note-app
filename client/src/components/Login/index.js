@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
 const Login = ({ setAuthentication }) => {
   const [data, setData] = useState({
     email: "",
@@ -26,8 +28,15 @@ const Login = ({ setAuthentication }) => {
     });
     const isLoggedIn = await loggedIn.json();
 
-    localStorage.setItem("token", isLoggedIn.token);
-    setAuthentication(true);
+    if (isLoggedIn.token) {
+      localStorage.setItem("token", isLoggedIn.token);
+      setAuthentication(true);
+      toast.success("Logged in");
+    } else {
+      setAuthentication(false);
+      console.log("Not Authorized");
+      toast.error(isLoggedIn);
+    }
   };
 
   return (

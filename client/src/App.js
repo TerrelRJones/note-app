@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Login from "./components/Login";
 import Register from "./components/Register/";
 import Dashboard from "./components/Dashboard/";
-import "./reset.css";
+// import "./reset.css";
 import "./app.css";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   BrowserRouter as Router,
@@ -13,12 +16,34 @@ import {
   Redirect,
 } from "react-router-dom";
 
+toast.configure();
+
 function App() {
   const [isAuth, setIsAuth] = useState(false);
 
   const setAuthentication = (boolean) => {
     setIsAuth(boolean);
   };
+
+  const isAuthenticated = async () => {
+    try {
+      const responese = await fetch("http://localhost:4001/verify", {
+        method: "GET",
+        headers: { token: localStorage.token },
+      });
+
+      const data = await responese.json();
+
+      data === true ? setIsAuth(true) : setIsAuth(false);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+  // check if user is authenticated upon page refresh
+  useEffect(() => {
+    isAuthenticated();
+  }, [isAuth]);
 
   return (
     <div className="container">
