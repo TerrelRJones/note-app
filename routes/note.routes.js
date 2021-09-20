@@ -32,22 +32,15 @@ router.get("/note", async (req, res) => {
   }
 });
 
-// // GET ALL NOTES
-// router.get("/notes", async (req, res) => {
-//   const notes = await Notes.findAll({ include: "user" });
-
-//   return res.json(notes);
-// });
-
 // DELETE NOTE
-router.delete("/note/:note_id", async (req, res) => {
-  // const { note_id } = req.body;
+router.delete("/note/:note_id", authorization, async (req, res) => {
   const { note_id } = req.params;
-  const { user } = req.params;
-  console.log(note_id + " " + user_id);
+  const { user } = req.body;
+
+  // console.log(note_id + " " + user.id);
   try {
     await Notes.destroy({
-      where: { note_uuid: note_id } && { user_id: user.user_id },
+      where: { note_uuid: note_id, userId: user },
     });
 
     return res.status(200).json("Note Deleted");

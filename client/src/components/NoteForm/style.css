@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__container {
+  width: 60%;
+}
+
+.form__text-area {
+  height: 80px;
+  margin-bottom: 10px;
+}

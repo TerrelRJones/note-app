@@ -5,10 +5,14 @@ const Notes = () => {
   const [notes, setNotes] = useState([]);
 
   // DELETE SINGLE NOTE
-  const deleteNote = async (id) => {
-    console.log(id);
+  const deleteNote = async (id, userId) => {
+    // console.log(id + " //// " + userId);
     await fetch(`http://localhost:4001/create/note/${id}`, {
       method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: userId,
+      }),
     });
   };
   // GET ALL NOTES
@@ -33,7 +37,9 @@ const Notes = () => {
                 <h1>{item.title}</h1>
                 <h3>{item.note}</h3>
                 <h3>{item.user.username}</h3>
-                <button onClick={() => deleteNote(item.note_uuid)}>
+                <button
+                  onClick={() => deleteNote(item.note_uuid, item.user.id)}
+                >
                   DELETE
                 </button>
               </div>
