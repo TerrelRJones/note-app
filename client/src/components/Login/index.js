@@ -26,6 +26,7 @@ const Login = ({ setAuthentication }) => {
         password: data.password,
       }),
     });
+
     const isLoggedIn = await loggedIn.json();
 
     if (isLoggedIn.token) {

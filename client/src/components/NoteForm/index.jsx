@@ -3,31 +3,32 @@ import "./style.css";
 
 const NoteForm = () => {
   const [noteData, setNoteData] = useState({
-    userUuid: "",
     title: "",
     note: "",
   });
 
   const handle = (e) => {
-    const newData = { ...noteData };
-    newData[e.target.id] = e.target.value;
-    setNoteData(newData);
+    const newNoteData = { ...noteData };
+    newNoteData[e.target.id] = e.target.value;
+    setNoteData(newNoteData);
   };
+
+  const header = new Headers();
+  header.append("Content-Type", "application/json");
+  header.append("token", localStorage.token);
 
   const createNote = async (e) => {
     e.preventDefault();
-    console.log(
-      noteData.title + "...." + noteData.note + " " + noteData.userUuid
-    );
-    // const note = await fetch("http://localhost:4001/create/note", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     userUuid: noteData.userUuid,
-    //     title: noteData.title,
-    //     note: noteData.note,
-    //   }),
-    // });
+    // console.log(noteData.title + "...." + noteData.note);
+    await fetch("http://localhost:4001/create/note", {
+      method: "POST",
+      headers: header,
+      body: JSON.stringify({
+        title: noteData.title,
+        note: noteData.note,
+      }),
+    });
+    window.location = "/dashboard";
   };
 
   return (
