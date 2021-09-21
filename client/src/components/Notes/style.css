@@ -1,15 +1,17 @@
 .note__container {
-  background-color: red;
+  /* background-color: red; */
   height: 60%;
   width: 60%;
   padding: 10px;
+  color: whitesmoke;
 }
 
 .note__card {
   margin-bottom: 20px;
   padding: 10px;
-  background-color: orange;
-  height: 100px;
+  background-color: black;
+  border-radius: 10px;
+  height: 20%;
 }
 
 .note__card h1 {

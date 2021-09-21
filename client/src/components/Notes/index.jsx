@@ -38,6 +38,7 @@ const Notes = () => {
                 <h3>{item.note}</h3>
                 <h3>{item.user.username}</h3>
                 <button
+                  className="btn btn-warning"
                   onClick={() => deleteNote(item.note_uuid, item.user.id)}
                 >
                   DELETE

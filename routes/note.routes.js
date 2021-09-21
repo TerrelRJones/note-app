@@ -4,10 +4,12 @@ const { Notes, User } = require("../models");
 const authorization = require("../middleware/authorization");
 
 // CREATE NOTE
-router.post("/note", async (req, res) => {
-  const { userUuid, title, note } = req.body;
+router.post("/note", authorization, async (req, res) => {
+  const { title, note } = req.body;
+  console.log(title + " " + note);
   try {
-    const user = await User.findOne({ where: { user_id: userUuid } });
+    const user = await User.findOne({ where: { user_id: req.user } });
+    // console.log(user);
 
     const notes = await Notes.create({ userId: user.id, title, note });
 
