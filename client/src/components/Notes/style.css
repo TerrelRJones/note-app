@@ -4,9 +4,11 @@
   width: 60%;
   padding: 10px;
   color: whitesmoke;
+  overflow-y: scroll;
 }
 
 .note__card {
+  position: relative;
   margin-bottom: 20px;
   padding: 10px;
   background-color: black;
@@ -18,4 +20,12 @@
   color: white;
   text-transform: uppercase;
   margin-bottom: 10px;
+}
+
+.notes__delete-btn {
+  position: absolute;
+  display: flex;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
 }

@@ -13,17 +13,22 @@ const NoteForm = () => {
     setNoteData(newNoteData);
   };
 
+  const header = new Headers();
+  header.append("Content-Type", "application/json");
+  header.append("token", localStorage.token);
+
   const createNote = async (e) => {
     e.preventDefault();
     // console.log(noteData.title + "...." + noteData.note);
     await fetch("http://localhost:4001/create/note", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: header,
       body: JSON.stringify({
         title: noteData.title,
         note: noteData.note,
       }),
     });
+    window.location = "/dashboard";
   };
 
   return (

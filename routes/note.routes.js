@@ -39,7 +39,7 @@ router.delete("/note/:note_id", authorization, async (req, res) => {
   const { note_id } = req.params;
   const { user } = req.body;
 
-  // console.log(note_id + " " + user.id);
+  console.log(user);
   try {
     await Notes.destroy({
       where: { note_uuid: note_id, userId: user },
