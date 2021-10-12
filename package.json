@@ -17,14 +17,14 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "sequelize db:migrate",
     "undo-migrate": "sequelize db:migrate:undo:all",
     "dev": "nodemon server.js"
-
-    
   },
   "keywords": [],
   "author": "Terrel Jones <TerrelRJones@gmail.com>",
