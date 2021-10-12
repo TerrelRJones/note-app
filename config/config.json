@@ -1,0 +1,18 @@
+  {
+  "development": {
+    "username": "postgres",
+    "password": "Jonestr125bl!",
+    "database": "note_app",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "terrelrjones",
+    "password": "password",
+    "database": "note_app",
+    "host": "localhost",
+    "dialect": "postgres",
+    "operatorsAliases": false,
+    "use_env_variable": "DATABASE_URL"
+  }
+}
