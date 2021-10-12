@@ -12,7 +12,6 @@
     "database": "note_app",
     "host": "localhost",
     "dialect": "postgres",
-    "rejectUnauthorized": false,
     "use_env_variable": "DATABASE_URL"
   }
 }
