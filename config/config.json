@@ -12,6 +12,13 @@
     "database": "d2hkidgumd2rml",
     "host": "ec2-54-147-76-191.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "use_env_variable": "DATABASE_URL"
+    "use_env_variable": "DATABASE_URL",
+    "port":"5432",
+    "dialectOptions": {
+         "ssl": {
+           "require": true,
+            "rejectUnauthorized": false
+          }
+        }
   }
 }
