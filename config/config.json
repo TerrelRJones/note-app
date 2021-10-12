@@ -7,7 +7,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "terrelrjones",
+    "username": "postgres",
     "password": "password",
     "database": "note_app",
     "host": "localhost",
