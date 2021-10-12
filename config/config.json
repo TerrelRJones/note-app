@@ -7,10 +7,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "password",
-    "database": "note_app",
-    "host": "localhost",
+    "username": "cuhntvqtdlvgay",
+    "password": "647e1a9e51bf41e437d9ff553a4fe6272c56738bd8a1c702a3f443a5253aa090",
+    "database": "d2hkidgumd2rml",
+    "host": "ec2-54-147-76-191.compute-1.amazonaws.com",
     "dialect": "postgres",
     "use_env_variable": "DATABASE_URL"
   }

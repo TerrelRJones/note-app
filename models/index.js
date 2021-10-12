@@ -11,14 +11,7 @@ const db = {};
 let sequelize;
 if (process.env.DATABASE_URL) {
   // config,
-  sequelize = new Sequelize(process.env.DATABASE_URL, config, {
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
-  });
+  sequelize = new Sequelize(process.env.DATABASE_URL, config);
 } else {
   sequelize = new Sequelize(
     config.database,
@@ -27,6 +20,7 @@ if (process.env.DATABASE_URL) {
     config
   );
 }
+console.log(config);
 
 fs.readdirSync(__dirname)
   .filter((file) => {
@@ -52,3 +46,12 @@ db.sequelize = sequelize;
 // db.Sequelize = Sequelize;
 
 module.exports = db;
+
+// {
+//   dialectOptions: {
+//     ssl: {
+//       require: true,
+//       rejectUnauthorized: false,
+//     },
+//   },
+// }
