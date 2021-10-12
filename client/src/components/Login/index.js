@@ -18,7 +18,7 @@ const Login = ({ setAuthentication }) => {
   // Login
   const login = async (e) => {
     e.preventDefault();
-    const loggedIn = await fetch("http://localhost:4001/login", {
+    const loggedIn = await fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

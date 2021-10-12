@@ -16,7 +16,7 @@ const Dashboard = ({ setAuthentication }) => {
   };
 
   const getName = async () => {
-    const user = await fetch("http://localhost:4001/dashboard", {
+    const user = await fetch("/dashboard", {
       method: "GET",
       headers: { token: localStorage.token },
     });
@@ -31,11 +31,13 @@ const Dashboard = ({ setAuthentication }) => {
 
   return (
     <div className="container">
-      <button className="btn btn-dark" onClick={(e) => logOut(e)}>
-        LOG OUT
-      </button>
-      <h1>NOTES</h1>
-      <h3 className="my-3">Hello, {name}</h3>
+      <div className="logOut-container">
+        <button className="btn btn-dark" onClick={(e) => logOut(e)}>
+          LOG OUT
+        </button>
+      </div>
+      {/* <h1 className="title">NOTES</h1> */}
+      <h3 className="title">Hello, {name}</h3>
       <Notes className="my-3" />
       <NoteForm />
     </div>

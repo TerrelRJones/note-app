@@ -4,4 +4,14 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding: 10px;
+}
+
+.logOut-container {
+  width: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: flex-end;
+
+  margin-bottom: 15px;
 }

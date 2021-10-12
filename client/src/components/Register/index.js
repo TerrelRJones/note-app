@@ -20,7 +20,7 @@ const Register = ({ setAuthentication }) => {
   // Login
   const register = async (e) => {
     e.preventDefault();
-    const registered = await fetch("http://localhost:4001/register", {
+    const registered = await fetch("/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -11,7 +11,7 @@ const Notes = () => {
   // DELETE SINGLE NOTE
   const deleteNote = async (id, user) => {
     // console.log(id + " //// " + userId);
-    await fetch(`http://localhost:4001/create/note/${id}`, {
+    await fetch(`/create/note/${id}`, {
       method: "DELETE",
       headers: header,
       body: JSON.stringify({
@@ -21,7 +21,7 @@ const Notes = () => {
   };
   // GET ALL NOTES
   const fetchData = async () => {
-    const data = await fetch("http://localhost:4001/create/note");
+    const data = await fetch("/create/note");
     const jsonData = await data.json();
 
     setNotes(jsonData);
@@ -38,16 +38,24 @@ const Notes = () => {
           return (
             <div key={item.note_uuid}>
               <div className="note__card">
-                <h1>{item.title}</h1>
-                <h3>{item.note}</h3>
-                <h3>{item.user.username}</h3>
+                <h1 className="note__card-title">{item.title}</h1>
+                <h3 className="note__card-note">{item.note}</h3>
                 <div className="notes__delete-btn">
-                  <button
-                    className="btn btn-warning"
-                    onClick={() => deleteNote(item.note_uuid, item.user.id)}
-                  >
-                    DELETE
-                  </button>
+                  <h3>{item.user.username}</h3>
+                  <div className="btn-container">
+                    <button
+                      className="edit-btn"
+                      onClick={() => deleteNote(item.note_uuid, item.user.id)}
+                    >
+                      EDIT
+                    </button>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteNote(item.note_uuid, item.user.id)}
+                    >
+                      DELETE
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
