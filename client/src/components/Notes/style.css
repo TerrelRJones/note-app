@@ -1,19 +1,31 @@
 .note__container {
   /* background-color: red; */
   height: 60%;
-  width: 60%;
+  width: 100%;
   padding: 10px;
   color: whitesmoke;
   overflow-y: scroll;
+  margin-bottom: 10px;
 }
 
 .note__card {
   position: relative;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 5px;
   background-color: black;
   border-radius: 10px;
-  height: 20%;
+  padding: 10px;
+  height: 150px;
+}
+
+.note__card-title {
+  font-family: sans-serif;
+  font-size: 1.3rem;
+}
+
+.note__card-note {
+  font-family: sans-serif;
+  font-size: 1rem;
 }
 
 .note__card h1 {
@@ -25,7 +37,27 @@
 .notes__delete-btn {
   position: absolute;
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
   right: 0;
   bottom: 0;
   padding: 10px;
+  /* background-color: red; */
+  width: 100%;
+}
+
+.delete-btn {
+  background-color: red;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.edit-btn {
+  background-color: yellow;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  margin-right: 10px;
 }

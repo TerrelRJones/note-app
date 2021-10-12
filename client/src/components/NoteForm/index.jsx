@@ -20,7 +20,7 @@ const NoteForm = () => {
   const createNote = async (e) => {
     e.preventDefault();
     // console.log(noteData.title + "...." + noteData.note);
-    await fetch("http://localhost:4001/create/note", {
+    await fetch("/create/note", {
       method: "POST",
       headers: header,
       body: JSON.stringify({
