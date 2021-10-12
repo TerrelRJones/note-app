@@ -26,10 +26,12 @@ app.use("/", userRouter);
 
 app.listen(port, async () => {
   console.log(`serving on port: ${port}`);
-  try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (e) {
-    console.error(e.message);
-  }
+  await sequelize
+    .authenticate()
+    .then(() => {
+      console.log("Connection has been established successfully.");
+    })
+    .catch((err) => {
+      console.error("Unable to connect to the database:", err);
+    });
 });
