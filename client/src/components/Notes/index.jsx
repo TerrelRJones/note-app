@@ -10,7 +10,7 @@ const Notes = () => {
 
   // DELETE SINGLE NOTE
   const deleteNote = async (id, user) => {
-    // console.log(id + " //// " + userId);
+    console.log(id + " //// " + user);
     await fetch(`/create/note/${id}`, {
       method: "DELETE",
       headers: header,
