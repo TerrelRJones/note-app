@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register/";
 import Dashboard from "./components/Dashboard/";
-// import "./reset.css";
 import "./app.css";
 
 import { toast } from "react-toastify";
