@@ -31,6 +31,9 @@ const Dashboard = ({ setAuthentication }) => {
 
   return (
     <div className="container">
+      <div>
+        <h1>NOTESSSSS</h1>
+      </div>
       <div className="logOut-container">
         <button className="btn btn-dark" onClick={(e) => logOut(e)}>
           LOG OUT
