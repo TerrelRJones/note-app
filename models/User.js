@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
     // NEGATE ID
-    toJSON() {
-      return { ...this.get(), id: undefined };
-    }
+    // toJSON() {
+    //   return { ...this.get(), id: undefined };
+    // }
   }
   User.init(
     {
@@ -27,6 +27,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
+      // setting id to be accessed on dashboard object
+      // userId: {
+      //   type: DataTypes.INTEGER,
+      //   allowNull: false,
+      // },
       username: {
         type: DataTypes.STRING,
         allowNull: false,

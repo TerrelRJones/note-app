@@ -7,6 +7,7 @@ import "./style.css";
 
 const Dashboard = ({ setAuthentication }) => {
   const [name, setName] = useState("");
+  const [user, setUser] = useState();
 
   const logOut = (e) => {
     e.preventDefault();
@@ -20,9 +21,10 @@ const Dashboard = ({ setAuthentication }) => {
       method: "GET",
       headers: { token: localStorage.token },
     });
+
     const res = await user.json();
-    console.log(res);
-    setName(res);
+    setName(res.username);
+    setUser(res.user_id);
   };
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const Dashboard = ({ setAuthentication }) => {
   return (
     <div className="container">
       <div>
-        <h1>NOTESSSSS</h1>
+        <h1>NOTE APP</h1>
       </div>
       <div className="logOut-container">
         <button className="btn btn-dark" onClick={(e) => logOut(e)}>

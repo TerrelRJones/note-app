@@ -34,9 +34,9 @@ const NoteForm = () => {
   return (
     <div className="form__container">
       <form className="form" onSubmit={(e) => createNote(e)}>
-        <label>Title</label>
+        <label className="form_title">Title</label>
         <input id="title" onChange={(e) => handle(e)} />
-        <label>Note</label>
+        <label className="form_note">Note</label>
         <textarea
           id="note"
           className="form__text-area"

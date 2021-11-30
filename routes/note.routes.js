@@ -21,9 +21,12 @@ router.post("/note", authorization, async (req, res) => {
 });
 
 // GET ALL NOTES W/ USER ATTACHED
-router.get("/note", async (req, res) => {
+router.get("/note/", async (req, res) => {
+  // const { userId } = req.params;
+
   try {
     const notes = await Notes.findAll({
+      // where: { userId: userId },
       include: "user",
     });
 
@@ -39,9 +42,6 @@ router.delete("/note/:note_id", authorization, async (req, res) => {
   const { note_id } = req.params;
   const { userId } = req.body;
   // const { note_id, user } = req.body;
-
-  console.log(userId);
-  console.log(note_id);
   try {
     await Notes.destroy({
       where: { note_uuid: note_id, userId: userId },

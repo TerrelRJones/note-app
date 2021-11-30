@@ -1,0 +1,31 @@
+.edit__modal-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  width: 50%;
+  height: 100vh;
+  background-color: aqua;
+}
+
+.edit__modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 700px;
+  background-color: aliceblue;
+}
+
+.edit_btn {
+  background-color: black;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 600;
+}
