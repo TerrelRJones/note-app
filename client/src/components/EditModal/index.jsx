@@ -1,27 +1,32 @@
+import e from "cors";
 import React, { useState } from "react";
 import "./style.css";
 
 const EditModal = ({ note }) => {
   const [showEditModal, setShowEditModal] = useState(false);
+  const [newTitle, setNewTitle] = useState(note.title);
+  const [newNote, setNewNote] = useState(note.note);
 
   const header = new Headers();
   header.append("Content-Type", "application/json");
   header.append("token", localStorage.token);
 
   // Edit single note
-  // const editNote = async (id, user, note) => {
-  //   setShowEditModal(!showEditModal);
-  //   console.log(id + " " + note + " " + user);
-  // await fetch(`/create/note/${id}`, {
-  //   method: "PUT",
-  //   headers: header,
-  //   body: JSON.stringify({
-  //     userId: user,
-  //     note: note,
-  //   }),
-  // });
-  // window.location = "/dashboard";
-  // };
+  const editNote = async () => {
+    e.preventDefault();
+    setShowEditModal(!showEditModal);
+
+    await fetch(`/create/note/${note.note_uuid}`, {
+      method: "PUT",
+      headers: header,
+      body: JSON.stringify({
+        userId: note.userId,
+        title: newTitle,
+        note: newNote,
+      }),
+    });
+    window.location = "/dashboard";
+  };
 
   return (
     <>
@@ -31,17 +36,23 @@ const EditModal = ({ note }) => {
       {showEditModal ? (
         <div className="edit__modal-container">
           <h1>EDIT MODAL</h1>
-          <form className="edit__modal-form">
+          <form className="edit__modal-form" onSubmit={(e) => editNote(e)}>
             <label>
               Title
               <div className="form-group">
-                <input value={note.title} />
+                <input
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                />
               </div>
             </label>
             <label>
               Note
               <div className="form-group">
-                <textarea value={note.note} />
+                <textarea
+                  value={newNote}
+                  onChange={(e) => setNewNote(e.target.value)}
+                />
               </div>
             </label>
             <div className="form-group">

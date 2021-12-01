@@ -7,7 +7,7 @@ import "./style.css";
 
 const Dashboard = ({ setAuthentication }) => {
   const [name, setName] = useState("");
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
 
   const logOut = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ const Dashboard = ({ setAuthentication }) => {
 
     const res = await user.json();
     setName(res.username);
-    setUser(res.user_id);
+    // setUser(res.user_id);
   };
 
   useEffect(() => {

@@ -57,11 +57,11 @@ router.delete("/note/:note_id", authorization, async (req, res) => {
 // EDIT NOTE
 router.put("/note/:note_id", authorization, async (req, res) => {
   const { note_id } = req.params;
-  const { userId, note } = req.body;
+  const { userId, title, note } = req.body;
 
   try {
     await Notes.update(
-      { note: note },
+      { title: title, note: note },
       {
         where: {
           note_uuid: note_id,
