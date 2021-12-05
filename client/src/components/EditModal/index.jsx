@@ -1,4 +1,3 @@
-import e from "cors";
 import React, { useState } from "react";
 import "./style.css";
 
@@ -12,7 +11,7 @@ const EditModal = ({ note }) => {
   header.append("token", localStorage.token);
 
   // Edit single note
-  const editNote = async () => {
+  const editNote = async (e) => {
     e.preventDefault();
     setShowEditModal(!showEditModal);
 
